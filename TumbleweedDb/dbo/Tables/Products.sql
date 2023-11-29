@@ -8,7 +8,7 @@
     [TaxGroup]           NVARCHAR (50)  NOT NULL,
     [Is18Plus]           BIT            NOT NULL,
     [IsExciseApplicable] BIT            NOT NULL,
-    CONSTRAINT [PK__tmp_ms_x__B40CC6CD733A5285] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_Products_Categories] FOREIGN KEY ([CategoryId]) REFERENCES [dbo].[Categories] ([Id])
 );
 
