@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Products] (
     [Id]                 INT            NOT NULL,
     [CategoryId]         INT            NOT NULL,
-    [ProductName]        NVARCHAR (255) NOT NULL,
-    [SKU]                BINARY (255)   NOT NULL,
+    [ProductName]        NVARCHAR (50)  NOT NULL,
+    [SKU]                INT            NOT NULL,
     [Price]              MONEY          NULL,
     [ImageURL]           NVARCHAR (255) NULL,
     [TaxGroup]           NVARCHAR (50)  NOT NULL,

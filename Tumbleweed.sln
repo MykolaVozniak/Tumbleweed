@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tumbleweed", "Tumbleweed\Tumbleweed.csproj", "{6853809E-9569-4C64-8E32-80E242C2406F}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TumbleweedDb", "TumbleweedDb\TumbleweedDb.sqlproj", "{231E0D84-63A4-450E-89A8-16915618FCFD}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TumbleweedDB", "TumbleweedDB\TumbleweedDB.sqlproj", "{59C52A60-7DCA-47B0-83F9-6402893ACF28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,12 @@ Global
 		{6853809E-9569-4C64-8E32-80E242C2406F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6853809E-9569-4C64-8E32-80E242C2406F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6853809E-9569-4C64-8E32-80E242C2406F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{231E0D84-63A4-450E-89A8-16915618FCFD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C52A60-7DCA-47B0-83F9-6402893ACF28}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
