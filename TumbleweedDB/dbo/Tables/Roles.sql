@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Roles] (
-    [Id]              INT            NOT NULL,
+    [Id]              INT            IDENTITY(1,1) NOT NULL,
     [ShopId]          INT            NOT NULL,
     [RoleName]        NVARCHAR (50)  NOT NULL,
     [RoleDescription] NVARCHAR (MAX) NULL,

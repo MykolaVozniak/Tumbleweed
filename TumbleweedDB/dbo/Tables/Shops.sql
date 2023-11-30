@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Shops] (
-    [Id]         INT            NOT NULL,
+    [Id]         INT            IDENTITY(1,1) NOT NULL,
     [ShopName]   NVARCHAR (MAX) NOT NULL,
     [City]       NVARCHAR (MAX) NOT NULL,
     [Adress]     NVARCHAR (MAX) NOT NULL,

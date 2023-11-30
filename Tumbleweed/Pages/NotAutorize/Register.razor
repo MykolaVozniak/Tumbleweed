@@ -1,4 +1,8 @@
 ﻿@page "/register"
+@using Tumbleweed.Controllers
+@using Tumbleweed.Models
+@inject IJSRuntime js
+@inject NavigationManager navManager
 
 <PageTitle>Register</PageTitle>
 
@@ -10,35 +14,35 @@
                     <h3 class="fw-normal mb-3 pb-3 text-center">Register</h3>
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Your First Name" />
+                        <input type="text" @bind="model.FirstName" id="firstName" class="form-control form-control-lg" placeholder="Your First Name" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Your Last Name" />
+                        <input type="text" @bind="model.LastName" id="lastName" class="form-control form-control-lg" placeholder="Your Last Name" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="middleName" class="form-control form-control-lg" placeholder="Your Middle Name" />
+                        <input type="text" @bind="model.MiddleName" id="middleName" class="form-control form-control-lg" placeholder="Your Middle Name" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="date" id="birthdate" class="form-control form-control-lg" placeholder="Your Birthdate" />
+                        <input type="date" @bind="model.Birthdate" id="birthdate" class="form-control form-control-lg" placeholder="Your Birthdate" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="email" id="email" class="form-control form-control-lg" placeholder="Your Email" />
+                        <input type="email" @bind="model.Email" id="email" class="form-control form-control-lg" placeholder="Your Email" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="tel" id="phone" class="form-control form-control-lg" placeholder="Your Phone" />
+                        <input type="tel" @bind="model.Phone" id="phone" class="form-control form-control-lg" placeholder="Your Phone" />
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="password" class="form-control form-control-lg" placeholder="Your Password" />
+                        <input type="password" @bind="model.Password" id="password" class="form-control form-control-lg" placeholder="Your Password" />
                     </div>
 
                     <div class="pt-1 mb-4 d-flex justify-content-center">
-                        <button class="btn btn-info btn-lg btn-block" type="button">Register</button>
+                        <button @onclick="RegisterTest" class="btn btn-info btn-lg btn-block" type="button">Register</button>
                     </div>
 
                     <p class="text-center">Already have an account? <a href="/login" class="link-info">Log In</a></p>
@@ -50,4 +54,46 @@
 
 @code {
 
+    private async Task LogToConsole(string message)
+    {
+        await js.InvokeVoidAsync("console.log", message);
+    }
+
+    private class Model
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MiddleName { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Password { get; set; }
+    }
+
+    private Model model = new Model();
+
+    private async Task RegisterTest()
+    {
+        var usersController = new UsersController();
+        var result = usersController.UserRegister(new User
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                MiddleName = model.MiddleName,                  
+                Birthdate = model.Birthdate,
+                Email = model.Email,
+                Phone = model.Phone,
+                Password = model.Password,
+
+            });
+        if (!result)
+        {
+            await LogToConsole($"fail");
+        }
+        else
+        {
+            await LogToConsole($"success");
+            navManager.NavigateTo("/login", true);
+        }
+    }
 }

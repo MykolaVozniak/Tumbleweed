@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Purchases] (
-    [Id]           INT      NOT NULL,
+    [Id]           INT      IDENTITY(1,1) NOT NULL,
     [ProductId]    INT      NOT NULL,
     [UserId]       INT      NOT NULL,
     [PurchaseTime] DATETIME NOT NULL,

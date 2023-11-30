@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Categories] (
-    [Id]                  INT            NOT NULL,
+    [Id]                  INT            IDENTITY(1,1) NOT NULL,
     [MotherCategoryId]    INT            NULL,
     [ShopId]              INT            NOT NULL,
     [CategoryName]        NVARCHAR (25)  NOT NULL,

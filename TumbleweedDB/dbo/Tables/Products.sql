@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Products] (
-    [Id]                 INT            NOT NULL,
+    [Id]                 INT            IDENTITY(1,1) NOT NULL,
     [CategoryId]         INT            NOT NULL,
     [ProductName]        NVARCHAR (50)  NOT NULL,
     [SKU]                INT            NOT NULL,
