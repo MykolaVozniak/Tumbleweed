@@ -1,7 +1,4 @@
-﻿@attribute [AllowAnonymous]
-@attribute [Authorize]
-
-@page "/login"
+﻿@page "/login"
 @using Tumbleweed.Authentication
 @inject Services.UserService us
 @inject IJSRuntime js
@@ -66,13 +63,14 @@
     private async Task AuthenticateTest()
     {
         await LogToConsole($"{model.Email} {model.Password}");
-        if (await us.AuthenticateUser(model.Email, model.Password))
+        if (await us.AuthenticateUser(model.Email, model.Password) != "Error")
         {
             var tumbleweedAuthStateProvider = (TumbleweedAuthenticationStateProvider)authStateProvider;
             await tumbleweedAuthStateProvider.UpdateAuthenticationState(new UserSession
                 {
                     Email = model.Email,
-                    Password = model.Password
+                    Password = model.Password,
+                    Id = await us.AuthenticateUser(model.Email, model.Password)
                 });
             await LogToConsole($"succes");
             navManager.NavigateTo("/", true);

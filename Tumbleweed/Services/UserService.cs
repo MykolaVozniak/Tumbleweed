@@ -27,7 +27,7 @@
             }
         }
 
-        public async Task<bool> AuthenticateUser(string email, string password)
+        public async Task<string> AuthenticateUser(string email, string password)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
@@ -35,9 +35,9 @@
                 var userAccount = await connection.QueryFirstOrDefaultAsync<User>("SELECT * FROM Users WHERE Email = @Email", new { Email = email });
                 if (userAccount == null || userAccount.Password != password)
                 {
-                    return false;
+                    return "Error";
                 }
-                return true;
+                return (userAccount.Id).ToString();
             }
         }
     }

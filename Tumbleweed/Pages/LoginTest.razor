@@ -44,7 +44,7 @@
     private async Task AuthenticateTest()
     {
         await LogToConsole($"{model.Email} {model.Password}");
-        if(await us.AuthenticateUser(model.Email, model.Password))
+        if(await us.AuthenticateUser(model.Email, model.Password) != null)
         {
             var tumbleweedAuthStateProvider = (TumbleweedAuthenticationStateProvider)authStateProvider;
             await tumbleweedAuthStateProvider.UpdateAuthenticationState(new UserSession

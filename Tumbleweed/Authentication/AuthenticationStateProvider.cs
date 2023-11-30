@@ -25,7 +25,8 @@ namespace Tumbleweed.Authentication
                 var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
                 new Claim(ClaimTypes.Email, userSession.Email),
-                new Claim(ClaimTypes.Role, userSession.Password)
+                new Claim(ClaimTypes.Role, userSession.Password),
+                new Claim(ClaimTypes.Hash, userSession.Id)
 
             }, "TumbleweedAuth"));
                 return await Task.FromResult(new AuthenticationState(claimsPrincipal));
@@ -47,8 +48,8 @@ namespace Tumbleweed.Authentication
                 claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
                 new Claim(ClaimTypes.Email, userSession.Email),
-                new Claim(ClaimTypes.Role, userSession.Password)
-
+                new Claim(ClaimTypes.Role, userSession.Password),
+                new Claim(ClaimTypes.Hash, userSession.Id)
             }));
             }
             else

@@ -1,52 +1,52 @@
-﻿@attribute [AllowAnonymous]
-@attribute [Authorize]
-
-@page "/register"
+﻿@page "/register"
 
 <PageTitle>Register</PageTitle>
 
 <section>
-    <div class="container-fluid">
-        <div class="row mt-5 pt-5">
-            <div class="col-sm-6 text-black">
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    <div class="container">
+        <div class="d-flex align-items-center justify-content-center px-5 mt-3">
+            <div>
+                <form>
+                    <h3 class="fw-normal mb-3 pb-3 text-center">Register</h3>
 
-                    <form>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Your First Name" />
+                    </div>
 
-                        <h3 class="fw-normal mb-3 pb-3 text-center">Register</h3>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Your Last Name" />
+                    </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg" placeholder="Your Name" />
-                        </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="middleName" class="form-control form-control-lg" placeholder="Your Middle Name" />
+                    </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg" placeholder="Your Email" />
-                        </div>
+                    <div class="form-outline mb-4">
+                        <input type="date" id="birthdate" class="form-control form-control-lg" placeholder="Your Birthdate" />
+                    </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="password" id="form2Example28" class="form-control form-control-lg" placeholder="Your Password" />
-                        </div>
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email" class="form-control form-control-lg" placeholder="Your Email" />
+                    </div>
 
-                        <div class="pt-1 mb-4 justify-content-center d-flex">
-                            <button class="btn btn-info btn-lg btn-block" type="button">Register</button>
-                        </div>
+                    <div class="form-outline mb-4">
+                        <input type="tel" id="phone" class="form-control form-control-lg" placeholder="Your Phone" />
+                    </div>
 
-                        <p>Already have an account? <a href="/login" class="link-info">Log In</a></p>
+                    <div class="form-outline mb-4">
+                        <input type="password" id="password" class="form-control form-control-lg" placeholder="Your Password" />
+                    </div>
 
-                    </form>
+                    <div class="pt-1 mb-4 d-flex justify-content-center">
+                        <button class="btn btn-info btn-lg btn-block" type="button">Register</button>
+                    </div>
 
-                </div>
-
-            </div>
-            <div class="col-sm-6 px-0 d-none d-sm-block">
-                <img src="/images/icon-tumbleweed.png"
-                     alt="Register image" class="w-75">
+                    <p class="text-center">Already have an account? <a href="/login" class="link-info">Log In</a></p>
+                </form>
             </div>
         </div>
     </div>
 </section>
-
-
 
 @code {
 

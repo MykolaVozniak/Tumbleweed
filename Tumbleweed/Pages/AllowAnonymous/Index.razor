@@ -29,6 +29,6 @@ Welcome to your new app.
 
     private string GetUserEmail()
     {
-        return User?.FindFirst(ClaimTypes.Email)?.Value ?? "Guest";
+        return $"{User?.FindFirst(ClaimTypes.Email)?.Value ?? "Guest"}  {User?.FindFirst(ClaimTypes.Hash)?.Value ?? "0"}";
     }
 }
