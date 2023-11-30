@@ -1,0 +1,32 @@
+﻿@page "/dbtest"
+@using Tumbleweed.Services
+@using Tumbleweed.Models
+
+@inject UserService UserService
+<PageTitle>My Data</PageTitle>
+<h3>My Data</h3>
+
+@if (data != null)
+{
+    <ul>
+        @foreach (var item in data)
+        {
+            <li>@item.Id - @item.FirstName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No data available.</p>
+}
+
+@code {
+    private IEnumerable<User> data;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        data = await UserService.GetData();
+
+    }
+}

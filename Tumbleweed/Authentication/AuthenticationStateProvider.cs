@@ -24,8 +24,8 @@ namespace Tumbleweed.Authentication
                     return await Task.FromResult(new AuthenticationState(_anonymous));
                 var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userSession.UserName),
-                new Claim(ClaimTypes.Role, userSession.Role)
+                new Claim(ClaimTypes.Email, userSession.Email),
+                new Claim(ClaimTypes.Role, userSession.Password)
 
             }, "TumbleweedAuth"));
                 return await Task.FromResult(new AuthenticationState(claimsPrincipal));
@@ -46,8 +46,8 @@ namespace Tumbleweed.Authentication
                 await _sessionStorage.SetAsync("UserSession", userSession);
                 claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userSession.UserName),
-                new Claim(ClaimTypes.Role, userSession.Role)
+                new Claim(ClaimTypes.Email, userSession.Email),
+                new Claim(ClaimTypes.Role, userSession.Password)
 
             }));
             }

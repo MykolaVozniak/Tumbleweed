@@ -2,10 +2,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Components.Web;
 using System.Net.Security;
-using Tumbleweed.Data;
 using Tumbleweed.Authentication;
-using Tumbleweed.Data;
 using Microsoft.AspNetCore.Components.Authorization;
+using Tumbleweed.Services;
 
 namespace Tumbleweed
 {
@@ -18,9 +17,14 @@ namespace Tumbleweed
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            //builder.Services.AddSingleton<WeatherForecastService>();
+
+            // Login part
             builder.Services.AddScoped<ProtectedSessionStorage>();
             builder.Services.AddScoped<AuthenticationStateProvider, TumbleweedAuthenticationStateProvider>();
-            builder.Services.AddSingleton<WeatherForecastService>();
+
+            // Services part
+            builder.Services.AddScoped<UserService>();
 
             var app = builder.Build();
 

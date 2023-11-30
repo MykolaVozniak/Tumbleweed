@@ -1,0 +1,63 @@
+﻿@page "/tb"
+@using Tumbleweed.Authentication
+@inject Services.UserService us
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navManager
+
+<PageTitle>Login VPKDC</PageTitle>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+        <div class="mb-3 text-center">
+            <h3>LOGIN</h3>
+        </div>
+        <div class="mb-3">
+            <label>Email</label>
+            <input @bind="model.Email" class="form-control" placeholder="Email" />
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <input @bind="model.Password" type="password" class="form-control" placeholder="Password" />
+        </div>
+        <div class="mb-3 d-grid gap-2">
+            <button @onclick="AuthenticateTest" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private async Task LogToConsole(string message)
+    {
+        await js.InvokeVoidAsync("console.log", message);
+    }
+
+    private class Model
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    private Model model = new Model();
+
+    private async Task AuthenticateTest()
+    {
+        await LogToConsole($"{model.Email} {model.Password}");
+        if(await us.AuthenticateUser(model.Email, model.Password))
+        {
+            var tumbleweedAuthStateProvider = (TumbleweedAuthenticationStateProvider)authStateProvider;
+            await tumbleweedAuthStateProvider.UpdateAuthenticationState(new UserSession
+            {
+                Email = model.Email,
+                Password = model.Password
+            });
+            await LogToConsole($"succes");
+            navManager.NavigateTo("/", true);
+        }
+        else
+        {
+            await LogToConsole($"fail");
+        }   
+    }
+}
