@@ -1,16 +1,29 @@
-﻿@inherits LayoutComponentBase
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+@inherits LayoutComponentBase
 
 <PageTitle>Tumbleweed</PageTitle>
 
 <div class="page">
+
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+        <AuthorizeView>
+            <Authorized>
+                <div class="top-row px-4">
+                    <a href="/account">My Account</a>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                <div class="top-row px-4">
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
+        
 
         <article class="content px-4">
             @Body

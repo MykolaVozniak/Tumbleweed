@@ -1,0 +1,85 @@
+﻿@attribute [AllowAnonymous]
+@attribute [Authorize]
+
+@page "/login"
+@using Tumbleweed.Authentication
+@inject Services.UserService us
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager navManager
+
+<PageTitle>Login</PageTitle>
+
+<section>
+    <div class="container-fluid">
+        <div class="row mt-5 pt-5">
+            <div class="col-sm-6 text-black">
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                    <form>
+
+                        <h3 class="fw-normal mb-3 pb-3 text-center">Log in</h3>
+
+                        <div class="form-outline mb-4">
+                            <input @bind="model.Email" type="email" id="form2Example18" class="form-control form-control-lg" placeholder="Your Email" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input @bind="model.Password" type="password" id="form2Example28" class="form-control form-control-lg" placeholder="Your Password" />
+                        </div>
+
+                        <div class="pt-1 mb-4 justify-content-center d-flex">
+                            <button @onclick="AuthenticateTest" class="btn btn-info btn-lg btn-block">Login</button>
+                        </div>
+
+                        <p>Don't have an account? <a href="/register" class="link-info">Register</a></p>
+
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="/images/icon-tumbleweed.png"
+                     alt="Login image" class="w-75">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@code {
+
+    private async Task LogToConsole(string message)
+    {
+        await js.InvokeVoidAsync("console.log", message);
+    }
+
+    private class Model
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    private Model model = new Model();
+
+    private async Task AuthenticateTest()
+    {
+        await LogToConsole($"{model.Email} {model.Password}");
+        if (await us.AuthenticateUser(model.Email, model.Password))
+        {
+            var tumbleweedAuthStateProvider = (TumbleweedAuthenticationStateProvider)authStateProvider;
+            await tumbleweedAuthStateProvider.UpdateAuthenticationState(new UserSession
+                {
+                    Email = model.Email,
+                    Password = model.Password
+                });
+            await LogToConsole($"succes");
+            navManager.NavigateTo("/", true);
+        }
+        else
+        {
+            await LogToConsole($"fail");
+        }
+    }
+}
